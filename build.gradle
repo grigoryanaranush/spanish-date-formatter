@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.grigoryanaranush'
+version '1.0-SNAPSHOT'
+
+ext {
+    lombokVersion = '1.18.24'
+    junitVersion = '5.9.0'
+    vavrVersion = '0.10.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    /** Code Generation */
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    /** Syntactic sugar */
+    implementation "io.vavr:vavr:${vavrVersion}"
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.google.guava:guava:31.1-jre'
+}
+
+test {
+    useJUnitPlatform()
+}
